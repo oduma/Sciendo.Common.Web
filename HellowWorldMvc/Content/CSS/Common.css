@@ -1,0 +1,31 @@
+﻿.title {
+    color:cadetblue;
+}
+body {
+    background-image:url("../Images/bodybackground.png");
+
+}
+.main-content {
+    color:darkgrey;
+    background-color:#ffffff;
+    margin-left:10pc;
+    margin-right:10pc;
+
+}
+
+.title-container {
+    margin-left:24px;
+    margin-top:12px;
+    margin-right:24px;
+}
+
+.new-text-input {
+    color: black;
+    margin-left: 24px;
+}
+.new-label-text-box {
+    margin: 36px;
+}
+.bottom-button {
+    margin-bottom: 24px;
+}
