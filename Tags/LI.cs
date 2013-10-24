@@ -32,5 +32,12 @@ namespace Sciendo.Common.Web.Tags
         {
             return base.Id(id) as LI;
         }
+
+
+        public new LI Style(string style)
+        {
+            return base.Style(style) as LI;
+        }
+
     }
 }

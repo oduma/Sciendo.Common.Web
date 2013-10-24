@@ -143,5 +143,11 @@ namespace Sciendo.Common.Web
             temp.Append("'}");
             return temp.ToString();
         }
+
+        public static IEnumerable<T> AddRangeReturn<T>(this List<T> inCollection, IEnumerable<T> items)
+        {
+            inCollection.AddRange(items);
+            return inCollection;
+        }
     }
 }

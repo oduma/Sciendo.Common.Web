@@ -10,7 +10,7 @@ namespace Sciendo.Common.Web.Components.Base
     {
         protected List<Tag> _contents;
 
-        internal List<Component> SubComponents; 
+        internal List<Component> SubComponents;
 
         protected Component Contents(IEnumerable<Tag> contents)
         {
@@ -20,7 +20,7 @@ namespace Sciendo.Common.Web.Components.Base
             return this;
         }
 
-        protected IEnumerable<string> AddContents()
+        protected virtual IEnumerable<string> AddContents()
         {
             List<string> result = new List<string>();
             foreach (var content in _contents)
@@ -43,7 +43,6 @@ namespace Sciendo.Common.Web.Components.Base
 
         }
  
-
         public virtual string InitializeJavaScript()
         {
             if(SubComponents==null)

@@ -53,12 +53,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AsynchUl.cs" />
     <Compile Include="Components\Base\Component.cs" />
+    <Compile Include="Components\Base\ComponentWithErrorHandling.cs" />
     <Compile Include="Components\Base\GridBase.cs" />
     <Compile Include="Components\Base\GridColumn.cs" />
     <Compile Include="Components\Base\IGridColumn.cs" />
     <Compile Include="Components\Base\SearchType.cs" />
     <Compile Include="Components\ControllerAction.cs" />
+    <Compile Include="Components\DialogErrorDisplayer.cs" />
+    <Compile Include="Components\ErrorDisplayer.cs" />
     <Compile Include="Components\Grids\Columns\BooleanColumn.cs" />
     <Compile Include="Components\Grids\Columns\DateGridColumn.cs" />
     <Compile Include="Components\Grids\Columns\GridColumnDefintions.cs" />
@@ -88,11 +92,15 @@
     <Compile Include="SciendoBundleConfig.cs" />
     <Compile Include="SciendoFilterConfig.cs" />
     <Compile Include="Styles\Style.cs" />
+    <Compile Include="Tags\A.cs" />
+    <Compile Include="Tags\GenericUl.cs" />
+    <Compile Include="Tags\Literal.cs" />
     <Compile Include="Tags\Script.cs" />
     <Compile Include="Tags\Section.cs" />
     <Compile Include="Tags\Base\TagWithIdAndCss.cs" />
     <Compile Include="Tags\Link.cs" />
     <Compile Include="Tags\Label.cs" />
+    <Compile Include="Tags\Span.cs" />
     <Compile Include="Tags\Table.cs" />
     <Compile Include="Views\Base\BaseView.cs" />
     <Compile Include="Tags\LI.cs" />
@@ -116,7 +124,19 @@
     <Content Include="Content\CSS\Common.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Scripts\3rdParty\grid.locale-en.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scripts\3rdParty\jquery.jqGrid.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scripts\3rdParty\jquery.jqGrid.src.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Scripts\Components\Namespace.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Scripts\Components\Sciendo.Common.AsynchUlClient.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Scripts\Components\Sciendo.Common.DatePickerClient.js">
@@ -140,10 +160,14 @@
     <Content Include="Content\Scripts\Sciendo.Common.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Scripts\Sciendo.Common.ParaJax.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(TargetDir)Content\*.* $(SolutionDir)HellowWorldMvc\Content\ /Y /S</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -24,9 +24,9 @@ components.DisplaySearchFormat = function (data, searchBaseId, formatData) {
 
 };
 
-components.SearchClient = function (apiUrl, searchBaseid, serverSideId, formatData) {
+components.SearchClient = function (apiUrl, searchBaseid, serverSideId, errorDisplayer, formatData) {
     $('#' + 'search_action_' + searchBaseid).click(function () {
-        var datain = eval("(" + "{ "+ serverSideId + " : $('#' + 'search_value_' + searchBaseid).val(), originator: 'display_area_' + searchBaseid }"+")");
+        var datain = eval("(" + "{ "+ serverSideId + " : $('#' + 'search_value_' + searchBaseid).val(), originator: errorDisplayer }"+")");
         $.getJSON(apiUrl, datain, function (data, textStatus, jhxqr) {
             if (formatData == null)
                 components.DisplaySearchNoFormat(data, searchBaseid);

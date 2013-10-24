@@ -28,6 +28,11 @@ namespace Sciendo.Common.Web.Tags
             return base.Contents(contents) as H2;
         }
 
+        public new H2 Style(string style)
+        {
+            return base.Style(style) as H2;
+        }
+
 
     }
 }

@@ -4,15 +4,11 @@ using Sciendo.Common.Web.Tags;
 using Sciendo.Common.Web.Tags.Base;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Sciendo.Common.Web.Components
 {
-    public class Search:Component
+    public class Search:ComponentWithErrorHandling
     {
         private string _id;
         private string _title;
@@ -72,12 +68,18 @@ namespace Sciendo.Common.Web.Components
             var result = new List<string>();
             Div titledDiv = new Div().Id(string.Format("{0}{1}{2}",Div.TagName,"_", _id))
                 .Contents(new Tag[] { new H2().Contents(_title).CssClasses(Style.Title) }).CssClasses(Style.TitleContainer);
-            titledDiv.Contents(new Tag[]{
-            new Input().InputType(TypeOfInput.Text).Size(_size).Id(string.Format("{0}{1}{2}",_valueFieldName,"_",_id)),
-            new Input().InputType(TypeOfInput.Button).Value(_buttonLabel).Id(string.Format("{0}{1}{2}",_actionFieldName,"_",_id)),
-            new P().Id(string.Format("{0}{1}{2}",_displayFieldName,"_",_id))});
-            _contents = new List<Tag>();
-            _contents.Add(titledDiv);
+            var subContents = new Tag[]
+                                  {
+                                      new Input().InputType(TypeOfInput.Text).Size(_size).Id(string.Format("{0}{1}{2}",
+                                                                                                           _valueFieldName,
+                                                                                                           "_", _id)),
+                                      new Input().InputType(TypeOfInput.Button).Value(_buttonLabel).Id(
+                                          string.Format("{0}{1}{2}", _actionFieldName, "_", _id)),
+                                      new P().Id(string.Format("{0}{1}{2}", _displayFieldName, "_", _id))
+                                  };
+            titledDiv.Contents(subContents);
+
+            _contents = new List<Tag> {titledDiv};
             result.AddRange(AddContents());
             return result;
         }
@@ -86,14 +88,26 @@ namespace Sciendo.Common.Web.Components
         public override string InitializeJavaScript()
         {
             var subComponentsInitialize = base.InitializeJavaScript();
-            var thisComponentInitialize = @"components.SearchClient('" + _actionUrl + "', '" + _id + "', '" +
-                                          _serverSideId + "'" +
-                                          ((string.IsNullOrEmpty(_formatDataClientFunction))
-                                               ? ""
-                                               : " ," + _formatDataClientFunction) +
-                                          ");";
+            var thisComponentInitialize = string.Format(@"components.SearchClient('{0}', '{1}', '{2}','{3}'{4});", _actionUrl,
+                                                        _id, _serverSideId,
+                                                        GetErrorDisplayer(),
+                                                        ((string.IsNullOrEmpty(_formatDataClientFunction))
+                                                             ? ""
+                                                             : " ," + _formatDataClientFunction));
             return string.Format("{0}{1}{2}",subComponentsInitialize,Environment.NewLine,thisComponentInitialize);
 
+        }
+        private string GetErrorDisplayer()
+        {
+            if(_errorDisplayer==null || string.IsNullOrEmpty(_errorDisplayer.Id))
+                return _displayFieldName + "_" + _id;
+            return _errorDisplayer.Id;
+        }
+
+        public new Search DisplayErrorUsing(ErrorDisplayer displayError)
+        {
+            displayError.GenerateId(_id);
+            return base.DisplayErrorUsing(displayError) as Search;
         }
     }
 }

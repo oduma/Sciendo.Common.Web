@@ -25,5 +25,10 @@ namespace Sciendo.Common.Web.Tags
             return base.Id(id) as Table;
         }
 
+        public new Table Style(string style)
+        {
+            return base.Style(style) as Table;
+        }
+
     }
 }

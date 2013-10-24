@@ -1,11 +1,8 @@
 ﻿using Sciendo.Common.Web.Tags.Base;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web.Mvc;
 
-namespace Sciendo.Common.Web
+namespace Sciendo.Common.Web.Tags
 {
     public class Section:TagWithContents
     {
@@ -30,6 +27,12 @@ namespace Sciendo.Common.Web
         public new Section Id(string id)
         {
             return base.Id(id) as Section;
+        }
+
+
+        public new Section Style(string style)
+        {
+            return base.Style(style) as Section;
         }
 
     }

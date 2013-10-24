@@ -31,5 +31,15 @@ namespace Sciendo.Common.Web.Tags
         {
             return base.Id(id) as Div;
         }
+
+        public Div Title(string title)
+        {
+            return base.Attribute("title", title) as Div;
+        }
+
+        public new Div Style(string style)
+        {
+            return base.Style(style) as Div;
+        }
     }
 }

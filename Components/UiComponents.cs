@@ -40,5 +40,20 @@ namespace Sciendo.Common.Web
             TProperty value = _model == null ? default(TProperty) : func.Compile()(_model);
             return new Grid<TProperty>(value);
         }
+
+        public ErrorDisplayer ErrorDisplayer()
+        {
+            return new ErrorDisplayer();
+        }
+
+        public DialogErrorDisplayer DialogErrorDisplayer()
+        {
+            return new DialogErrorDisplayer();
+        }
+
+        public AsynchUl AsynchUl()
+        {
+            return new AsynchUl();
+        }
     }
 }

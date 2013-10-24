@@ -28,5 +28,10 @@ namespace Sciendo.Common.Web.Tags
             return base.Contents(contents) as P;
         }
 
+        public new P Style(string style)
+        {
+            return base.Style(style) as P;
+        }
+
     }
 }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Sciendo.Common.Web.Tags.Base
+﻿namespace Sciendo.Common.Web.Tags.Base
 {
     public abstract class TagWithIdAndCss:Tag
     {
@@ -20,6 +12,11 @@ namespace Sciendo.Common.Web.Tags.Base
         protected Tag CssClasses(string cssClasses)
         {
             return Attribute("class", cssClasses);
+        }
+
+        protected Tag Style(string style)
+        {
+            return Attribute("style", style);
         }
     }
 }

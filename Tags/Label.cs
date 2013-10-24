@@ -28,5 +28,11 @@ namespace Sciendo.Common.Web.Tags
         {
             return base.Id(id) as Label;
         }
+
+        public new Label Style(string style)
+        {
+            return base.Style(style) as Label;
+        }
+
     }
 }

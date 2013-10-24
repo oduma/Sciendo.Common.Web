@@ -53,9 +53,10 @@ namespace Sciendo.Common.Web
             return new LI();
         }
 
-        public Ul UlFor(Func<T, IEnumerable<LI>> func,string id)
+        public Ul<TProperty> UlFor<TProperty>(Expression<Func<T, TProperty>> func)
         {
-            return new Ul().Contents(func.Invoke(_model)).Id(id) as Ul;
+            TProperty value = _model == null ? default(TProperty) : func.Compile()(_model);
+            return new Ul<TProperty>(value);
         }
 
         public HtmlString IncludeCommonCss()
@@ -81,6 +82,21 @@ namespace Sciendo.Common.Web
         public Table Table()
         {
             return new Table();
+        }
+
+        public Span Span()
+        {
+            return new Span();
+        }
+
+        public Literal Literal()
+        {
+            return new Literal();
+        }
+
+        public A A()
+        {
+            return new A();
         }
     }
 }

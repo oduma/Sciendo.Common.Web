@@ -24,5 +24,15 @@ namespace Sciendo.Common.Web.Tags
             return base.Contents(contents) as Ul;
         }
 
+
+        public new Ul Style(string style)
+        {
+            return base.Style(style) as Ul;
+        }
+
+        public new Ul Id(string id)
+        {
+            return base.Id(id) as Ul;
+        }
     }
 }

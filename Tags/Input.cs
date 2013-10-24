@@ -41,5 +41,11 @@ namespace Sciendo.Common.Web.Tags
         {
             return base.Id(id) as Input;
         }
+
+        public new Input Style(string style)
+        {
+            return base.Style(style) as Input;
+        }
+
     }
 }
